@@ -1,4 +1,4 @@
-// const emojiDatasourceJson = require("emoji-datasource/emoji.json");
+// import emojiDatasourceJson from "emoji-datasource/emoji.json";
 
 async function main() {
   // TODO: build index.json

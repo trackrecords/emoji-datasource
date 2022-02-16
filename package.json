@@ -9,11 +9,16 @@
     "index.d.ts"
   ],
   "scripts": {
-    "build": "node lib/build.js"
+    "build": "ts-node lib/build.ts"
   },
-  "keywords": ["emoji"],
+  "keywords": [
+    "emoji"
+  ],
   "license": "ISC",
   "devDependencies": {
-    "emoji-datasource": "^7.0.2"
+    "@tsconfig/node14": "^1.0.1",
+    "emoji-datasource": "^7.0.2",
+    "ts-node": "^10.5.0",
+    "typescript": "^4.5.5"
   }
 }
