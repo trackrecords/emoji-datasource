@@ -10,6 +10,10 @@ import emojis from "@trackrecords/emoji-datasource/index.json";
 import { type Emoji } from "@trackrecords/emoji-datasource";
 ```
 
+## Development
+
+When `emoji-datasource` version is updated, run `npm run build` on your machine to update `index.json`.
+
 ## Version Management
 
 This package corresponds with `emoji-datasource` and major and minor version is the same with the package.
