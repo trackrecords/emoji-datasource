@@ -1,0 +1,19 @@
+{
+  "name": "@trackrecords/emoji-datasource",
+  "version": "7.0.0",
+  "description": "Lighter version of emoji-datasource for internal use.",
+  "main": "index.json",
+  "types": "index.d.ts",
+  "files": [
+    "index.json",
+    "index.d.ts"
+  ],
+  "scripts": {
+    "build": "node lib/build.js"
+  },
+  "keywords": ["emoji"],
+  "license": "ISC",
+  "devDependencies": {
+    "emoji-datasource": "^7.0.2"
+  }
+}
