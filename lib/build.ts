@@ -1,4 +1,4 @@
-import { createReadStream, createWriteStream, type ReadStream } from "node:fs";
+import { createReadStream, createWriteStream } from "node:fs";
 import { join } from "node:path";
 import { Transform, Writable, type TransformCallback } from "node:stream";
 import { pipeline } from "node:stream/promises";
@@ -70,11 +70,11 @@ function convert() {
 }
 
 // Cannot detect the last chunk in Node.js stream.
-async function getLastName(src: ReadStream) {
+async function getLastName(path: string) {
   let lastName = "";
 
   await pipeline(
-    src,
+    createReadStream(path),
     parser(),
     streamArray(),
     new Writable({
@@ -93,48 +93,50 @@ async function getLastName(src: ReadStream) {
   return lastName;
 }
 
-async function main() {
-  const dest = join(__dirname, "../index.json");
-  const src = () =>
-    createReadStream(
-      join(__dirname, "../node_modules/emoji-datasource/emoji.json")
-    );
-
-  const lastName = await getLastName(src());
-
+function toJSONString(lastName: string): Transform {
   let first = true;
-  const toJSONString = () =>
-    new Transform({
-      writableObjectMode: true,
-      transform(
-        chunk: Emoji,
-        _encoding: BufferEncoding,
-        callback: TransformCallback
-      ) {
-        if (first) {
-          this.push("[");
-          first = false;
-        }
 
-        this.push(JSON.stringify(chunk));
+  return new Transform({
+    writableObjectMode: true,
+    transform(
+      chunk: Emoji,
+      _encoding: BufferEncoding,
+      callback: TransformCallback
+    ) {
+      if (first) {
+        this.push("[");
+        first = false;
+      }
 
-        if (chunk.name !== lastName) {
-          this.push(",");
-        } else {
-          this.push("]");
-        }
+      this.push(JSON.stringify(chunk));
 
-        callback();
-      },
-    });
+      if (chunk.name !== lastName) {
+        this.push(",");
+      } else {
+        this.push("]");
+      }
+
+      callback();
+    },
+  });
+}
+
+async function main() {
+  const srcPath = join(
+    __dirname,
+    "../node_modules/emoji-datasource/emoji.json"
+  );
+  const destPath = join(__dirname, "../index.json");
+
+  const lastName = await getLastName(srcPath);
 
   await pipeline(
-    src(),
+    createReadStream(srcPath),
     parser(),
     streamArray(),
     convert(),
-    toJSONString(),
-    createWriteStream(dest)
+    toJSONString(lastName),
+    createWriteStream(destPath)
   );
 }
 
