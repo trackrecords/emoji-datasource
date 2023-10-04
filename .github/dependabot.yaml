@@ -1,0 +1,13 @@
+version: 2
+updates:
+  - package-ecosystem: npm
+    directory: "/"
+    schedule:
+      interval: weekly
+      day: "monday"
+      time: "08:00"
+      timezone: "Asia/Tokyo"
+    open-pull-requests-limit: 30
+    rebase-strategy: disabled
+    reviewers:
+      - munky69rock

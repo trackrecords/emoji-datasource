@@ -10,7 +10,7 @@ export function toJSONString(lastName: string): Transform {
     transform(
       chunk: Emoji,
       _encoding: BufferEncoding,
-      callback: TransformCallback
+      callback: TransformCallback,
     ) {
       if (first) {
         this.push("[");

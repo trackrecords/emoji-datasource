@@ -20,12 +20,12 @@ export async function getLastName(path: string) {
       write(
         chunk: SourceEmoji,
         _encoding: BufferEncoding,
-        callback: (error?: Error) => void
+        callback: (error?: Error) => void,
       ) {
         lastName = chunk.value.short_name;
         callback();
       },
-    })
+    }),
   );
 
   return lastName;
