@@ -12,7 +12,7 @@ import { toJSONString } from "./build/to-json-string";
 async function main() {
   const srcPath = join(
     __dirname,
-    "../node_modules/emoji-datasource/emoji.json"
+    "../node_modules/emoji-datasource/emoji.json",
   );
   const destPath = join(__dirname, "../index.json");
 
@@ -24,7 +24,7 @@ async function main() {
     streamArray(),
     convert(),
     toJSONString(lastName),
-    createWriteStream(destPath)
+    createWriteStream(destPath),
   );
 }
 

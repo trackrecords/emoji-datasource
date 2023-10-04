@@ -19,7 +19,7 @@ export function convert() {
     transform(
       chunk: SourceEmoji,
       _encoding: BufferEncoding,
-      callback: TransformCallback
+      callback: TransformCallback,
     ) {
       const { value } = chunk;
       const { short_name: name, short_names, unified: unicode } = value;

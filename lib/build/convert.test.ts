@@ -98,23 +98,23 @@ describe("convert", () => {
     expect(emoji).toHaveProperty("skinVariations");
     const skins = emoji.skinVariations!;
     expect(skins["2"].name).toBe(
-      "man_in_business_suit_levitating::skin-tone-2"
+      "man_in_business_suit_levitating::skin-tone-2",
     );
     expect(skins["2"].unicode).toBe("1F574-1F3FB");
     expect(skins["3"].name).toBe(
-      "man_in_business_suit_levitating::skin-tone-3"
+      "man_in_business_suit_levitating::skin-tone-3",
     );
     expect(skins["3"].unicode).toBe("1F574-1F3FC");
     expect(skins["4"].name).toBe(
-      "man_in_business_suit_levitating::skin-tone-4"
+      "man_in_business_suit_levitating::skin-tone-4",
     );
     expect(skins["4"].unicode).toBe("1F574-1F3FD");
     expect(skins["5"].name).toBe(
-      "man_in_business_suit_levitating::skin-tone-5"
+      "man_in_business_suit_levitating::skin-tone-5",
     );
     expect(skins["5"].unicode).toBe("1F574-1F3FE");
     expect(skins["6"].name).toBe(
-      "man_in_business_suit_levitating::skin-tone-6"
+      "man_in_business_suit_levitating::skin-tone-6",
     );
     expect(skins["6"].unicode).toBe("1F574-1F3FF");
     expect(emoji).not.toHaveProperty("aliases");
